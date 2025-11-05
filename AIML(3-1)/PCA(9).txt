@@ -1,0 +1,36 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.decomposition import PCA
+data={'x1':[4,8,13,7], 'x2':[11, 4, 5, 14]}
+df=pd.DataFrame(data)
+print("original data:\n", df)
+X=df.values
+X_mean=np.mean(X,axis=0)
+X_centered=X-X_mean
+print("\n mean of each feature:", X_mean)
+print("\n centered data:\n", X_centered)
+cov_matrix=np.cov(X_centered.T)
+print("\n covariance matrix:\n", cov_matrix)
+eigen_values,eigen_vectors=np.linalg.eigh(cov_matrix)
+sorted_idx=np.argsort(eigen_values)[::-1]
+eigen_values=eigen_values[sorted_idx]
+eigen_vectors=eigen_vectors[:,sorted_idx]
+print("\n eigen values:\n", eigen_values)
+print("\n eigrn vectors:\n", eigen_vectors)
+X_reduced=np.dot(X_centered, eigen_vectors)
+print("\n projected data(Principal Components):\n", X_reduced)
+pca = PCA()
+pca.fit(X)
+print("\n sklearn PCA components:\n", pca.components_)
+print("\n sklearn explained variance ratio:\n", pca.explained_variance_ratio_)
+plt.figure(figsize=(6,5))
+plt.scatter(X_reduced[:, 0], X_reduced[:,1], color='orange', s=80)
+for i, txt in enumerate(range(len(X_reduced))):
+    plt.annotate(txt +1, (X_reduced[i,0], X_reduced[i,1]))
+    plt.xlabel('principal component 1')
+    plt.ylabel('principal component 2')
+    plt.title('PCA Projection(2D)')
+    plt.grid(True)
+    plt.show()
+

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Registration Page</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+h2 {
+  text-align: center;
+  color: #444;
+}
+
+form {
+  background-color: #fff;
+  width: 400px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"],
+textarea,
+select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.form-buttons {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.form-buttons input {
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #28a745;
+  color: white;
+  cursor: pointer;
+}
+
+.form-buttons input[type="reset"] {
+  background-color: #dc3545;
+}
+
+.form-buttons input:hover {
+  opacity: 0.9;
+}
+
+.checkbox-group,
+.radio-group,
+.dob-group {
+  margin-top: 10px;
+}
+
+.checkbox-group label,
+.radio-group label,
+.dob-group label {
+  font-weight: normal;
+  margin-right: 10px;
+}
+
+.dob-select {
+  width: 32%;
+  display: inline-block;
+  margin-right: 2%;
+}
+
+.dob-select:last-child {
+  margin-right: 0;
+}
+</style>
+</head>
+
+<body>
+<h2>Registration Form</h2>
+
+<form>
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required>
+
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password" required>
+
+  <label for="email">E-mail id:</label>
+  <input type="text" id="email" name="email" required>
+
+  <label for="phone">Phone number:</label>
+  <input type="text" id="phone" name="phone" required>
+
+  <div class="radio-group">
+    <label>Sex:</label>
+    <label><input type="radio" name="sex" value="male" required> Male</label>
+    <label><input type="radio" name="sex" value="female" required> Female</label>
+  </div>
+
+  <div class="dob-group">
+    <label>Date of birth:</label>
+    <select name="dob-day" class="dob-select" required>
+      <option value="">Day</option>
+      <!-- Days 1 to 31 -->
+      <script>
+        for(let i=1; i<=31; i++) {
+          document.write('<option value="'+i+'">'+i+'</option>');
+        }
+      </script>
+    </select>
+    <select name="dob-month" class="dob-select" required>
+      <option value="">Month</option>
+      <option value="1">January</option>
+      <option value="2">February</option>
+      <option value="3">March</option>
+      <option value="4">April</option>
+      <option value="5">May</option>
+      <option value="6">June</option>
+      <option value="7">July</option>
+      <option value="8">August</option>
+      <option value="9">September</option>
+      <option value="10">October</option>
+      <option value="11">November</option>
+      <option value="12">December</option>
+    </select>
+    <select name="dob-year" class="dob-select" required>
+      <option value="">Year</option>
+      <!-- Example years from 1900 to 2025 -->
+      <script>
+        for(let y=2025; y>=1900; y--) {
+          document.write('<option value="'+y+'">'+y+'</option>');
+        }
+      </script>
+    </select>
+  </div>
+
+  <div class="checkbox-group">
+    <label>Languages known:</label>
+    <label><input type="checkbox" name="languages" value="english"> English</label>
+    <label><input type="checkbox" name="languages" value="telugu"> Telugu</label>
+    <label><input type="checkbox" name="languages" value="hindi"> Hindi</label>
+    <label><input type="checkbox" name="languages" value="tamil"> Tamil</label>
+  </div>
+
+  <label for="address">Address:</label>
+  <textarea name="address" id="address" rows="3" cols="20" required></textarea>
+
+  <div class="form-buttons">
+    <input type="submit" value="Accept">
+    <input type="reset" value="Ignore">
+  </div>
+</form>
+</body>
+</html>

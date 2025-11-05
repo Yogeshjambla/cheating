@@ -1,0 +1,50 @@
+import pandas as pd 
+import matplotlib.pyplot as plt 
+
+df = pd.read_csv('E:\diabetes+130-us+hospitals+for+years+1999-2008.zip.csv', delimiter=',') 
+numeric_columns = ["admission_type_id","discharge_disposition_id","admission_source_id","time_in_hospital","num_lab_procedures"] 
+mean_vals = df[numeric_columns].mean() 
+median_vals = df[numeric_columns].median() 
+mode_vals = df[numeric_columns].mode().iloc[0] 
+print("=== Mean ===\n", mean_vals) 
+print("\n=== Median ===\n", median_vals) 
+print("\n=== Mode ===\n", mode_vals)
+
+df.plot()
+plt.title('Diabetics Graph')
+plt.xlabel('number_diagnoses')
+plt.ylabel('encounter_id')
+plt.show()
+
+import pandas as pd
+import matplotlib.pyplot as plt 
+import seaborn as sns 
+
+df = pd.read_csv('E:\diabetes+130-us+hospitals+for+years+1999-2008.zip.csv')
+
+sns.set(style="whitegrid") 
+plt.figure(figsize=(16, 20)) 
+
+plt.subplot(3, 2, 1) 
+target_counts = df["race"].value_counts() 
+plt.pie(target_counts, labels=target_counts.index, autopct='%1.1f%%', startangle=140, 
+colors=sns.color_palette("pastel")) 
+plt.title("Race (Caucasian,AfricanAmerican,other)") 
+
+plt.subplot(3, 2, 2) 
+sns.boxplot(data=df[["admission_type_id","discharge_disposition_id"]]) 
+plt.title("Boxplot for admission_type_id and discharge_disposition_id") 
+
+plt.subplot(3, 2, 3) 
+sns.histplot(df["num_lab_procedures"], bins=20, kde=False, color="skyblue") 
+plt.title("Histogram for num_lab_procedures") 
+ 
+plt.subplot(3, 2, 4) 
+sns.scatterplot(x="admission_type_id", y="discharge_disposition_id", data=df, alpha=0.6) 
+plt.title("admission_type_ie vs discharge_disposition_ide") 
+
+plt.subplot(3, 2, 5) 
+sns.kdeplot(df["num_lab_procedures"], shade=True, color="purple") 
+plt.title("Density Plot for num_lab_procedures") 
+plt.tight_layout() 
+plt.show() 

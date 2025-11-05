@@ -1,0 +1,61 @@
+from collections import deque
+
+def successors(state, cap_x, cap_y):
+    x, y = state
+    succs = []
+    succs.append(((cap_x, y), "Fill x"))
+    succs.append(((x, cap_y), "Fill y"))
+    succs.append(((0, y), "Empty x"))
+    succs.append(((x, 0), "Empty y"))
+    transfer = min(x, cap_y - y)
+    succs.append(((x - transfer, y + transfer), "Pour x->y"))
+    transfer = min(y, cap_x - x)
+    succs.append(((x + transfer, y - transfer), "Pour y->x"))
+    return succs
+def bfs(cap_x, cap_y, target):
+    start = (0, 0)
+    queue = deque([(start, [])])
+    visited = set([start])
+    while queue:
+        (x, y), path = queue.popleft()
+        if x == target or y == target:
+            return path + [((x, y), "Goal reached")]
+        for next_state, action in successors((x, y), cap_x, cap_y):
+            if next_state not in visited:
+                visited.add(next_state)
+                queue.append((next_state, path + [((x, y), action)]))
+    return None
+def dfs(cap_x, cap_y, target):
+    start = (0, 0)
+    stack = [(start, [])]
+    visited = set()
+    while stack:
+        (x, y), path = stack.pop()
+        if x == target or y == target:
+            return path + [((x, y), "Goal reached")]
+        if (x, y) in visited:
+            continue
+        visited.add((x, y))
+        for next_state, action in successors((x, y), cap_x, cap_y):
+            if next_state not in visited:
+                stack.append((next_state, path + [((x, y), action)]))
+    return None
+if __name__ == "__main__":
+    cap_x = 4
+    cap_y = 3
+    target = 2
+    print("=== BFS Solution ===")
+    solution = bfs(cap_x, cap_y, target)
+    if solution:
+        for state, action in solution:
+            print(f"{state} -> {action}")
+    else:
+        print("No solution found.")
+
+    print("\n=== DFS Solution ===")
+    solution = dfs(cap_x, cap_y, target)
+    if solution:
+        for state, action in solution:
+            print(f"{state} -> {action}")
+    else:
+        print("No solution found.")

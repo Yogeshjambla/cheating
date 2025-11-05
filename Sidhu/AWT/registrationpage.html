@@ -1,0 +1,88 @@
+<html>
+<head>
+<title>Registration Page</title>
+<style>
+body{
+font-family: Arial, sans-serif;
+background-color: #f4f4f4;
+padding: 20px;
+}
+
+h2{
+text-align: center;
+color: #444;
+}
+
+form{
+background-color: #fff;
+width: 400px;
+margin: auto;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+label{
+display: block;
+margin-top: 10px;
+font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+width: 100%;
+padding: 8px;
+margin-top: 5px;
+border-radius: 5px;
+border: 1px solid #ccc;
+}
+
+.form-buttons{
+text-align: center;
+margin-top: 20px;
+}
+
+.form-buttons input{
+padding: 10px 20px;
+margin: 0 10px;
+border: none;
+border-radius: 5px;
+background-color: #28a745;
+color: white;
+cursor: pointer;
+}
+
+.form-buttons input[type="reset"]{
+background-color: #dc3545;
+}
+
+.form-buttons input:hover{
+opacity: 0.9;
+}
+</style>
+</head>
+
+<body>
+<h2>Registration Form</h2>
+<p>
+<form>
+<label for="login-name">Name:</label>
+<input type="text" id="login-name" name="name" required>
+<label for="login-password">Password:</label>
+<input type="password" id="login-password" name="password" required><br>
+Qualification:<br><input type="checkbox" name="e" value="bt">B.Tech<br>
+			  <input type="checkbox" name="e" value="mt">M.Tech<br><br>
+Gender:<input type="radio" name="g" value="m">Male
+	   <input type="radio" name="g" value="f">Female<br><br>
+Course:<select name="course" size="1">
+	   <option value="1" selected>CSE
+	   <option value="2">ECE
+	   <option value="3">Mech
+	   </select><br><br>
+Address:<textarea name="address" rows="2" cols="20">
+		</textarea><br><br>
+<input type="Submit" value="Accept">
+<input type="Reset" value="Ignore">
+</form>
+</body>
+</html>

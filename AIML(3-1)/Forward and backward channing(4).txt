@@ -1,0 +1,67 @@
+FC
+
+
+
+rules = [
+    (["fever", "cough"], "flu"),
+    (["fever", "chest pain"], "Pnemonia"),
+    (["Sneezing", "running Nose"], "cold"),
+    (["flu"], "recomended_rest"),
+    (["Pnemonia"], "recomended_antibiotics")
+]
+
+facts = {"fever", "cough"}
+
+def fc(facts, rules):
+    inferred = set(facts)
+    changed = True
+    while changed:
+        changed = False
+        for antecedents, consequent in rules:
+            if all(a in inferred for a in antecedents) and consequent not in inferred:
+                print(f"Rule fired: {antecedents} -> {consequent}")
+                inferred.add(consequent)
+                changed = True
+    return inferred
+
+print("Initial facts:", facts)
+print("\n-- Forward Chaining --")
+inferred = fc(facts, rules)
+print("All inferred facts:", inferred)
+
+
+
+
+
+BC
+
+
+rules = [
+    (["fever", "cough"], "flu"),
+    (["fever", "chest pain"], "Pnemonia"),
+    (["Sneezing", "running Nose"], "cold"),
+    (["flu"], "recomended_rest"),
+    (["Pnemonia"], "recomended_antibiotics")
+]
+
+facts = {"fever", "cough"}
+
+def bc(goal, facts, rules):
+    if goal in facts:
+        print(f"{goal} is known")
+        return True
+    for antecedents, consequent in rules:
+        if consequent == goal:
+            print(f"To prove {goal}, need {antecedents}")
+            if all(bc(a, facts, rules) for a in antecedents):
+                print(f"{goal} is provided by rule: {antecedents} -> {consequent}")
+                return True
+    print(f"Cannot prove {goal}")
+    return False
+
+print("\n-- Backward Chaining --")
+goal = "recomended_antibiotics"
+print(f"Try to prove goal: {goal}")
+bc(goal, facts, rules)
+
+

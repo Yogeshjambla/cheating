@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Registration Page</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+background-color: #f4f4f4;
+padding: 20px;
+}
+
+h2{
+text-align: center;
+color: #444;
+}
+
+form{
+background-color: #fff;
+width: 400px;
+margin: auto;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+label{
+display: block;
+margin-top: 10px;
+font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"],
+textarea,
+select{
+width: 100%;
+padding: 8px;
+margin-top: 5px;
+border-radius: 5px;
+border: 1px solid #ccc;
+box-sizing: border-box;
+}
+
+.form-buttons{
+text-align: center;
+margin-top: 20px;
+}
+
+.form-buttons input{
+padding: 10px 20px;
+margin: 0 10px;
+border: none;
+border-radius: 5px;
+background-color: #28a745;
+color: white;
+cursor: pointer;
+}
+
+.form-buttons input[type="reset"]{
+background-color: #dc3545;
+}
+
+.form-buttons input:hover{
+opacity: 0.9;
+}
+
+.checkbox-group,
+.radio-group{
+margin-top: 10px;
+}
+
+.checkbox-group label,
+.radio-group label{
+font-weight: normal;
+margin-right: 10px;
+}
+</style>
+</head>
+
+<body>
+<h2>Registration Form</h2>
+
+<form>
+<label for="login-name">Name:</label>
+<input type="text" id="login-name" name="name" required>
+
+<label for="login-password">Password:</label>
+<input type="password" id="login-password" name="password" required>
+
+<div class="checkbox-group">
+<label>Qualification:</label>
+<label><input type="checkbox" name="qualification" value="bt"> B.Tech</label>
+<label><input type="checkbox" name="qualification" value="mt"> M.Tech</label>
+</div>
+
+<div class="radio-group">
+<label>Gender:</label>
+<label><input type="radio" name="gender" value="m"> Male</label>
+<label><input type="radio" name="gender" value="f"> Female</label>
+</div>
+
+<label for="course">Course:</label>
+<select name="course" id="course" size="1">
+<option value="1" selected>CSE</option>
+<option value="2">ECE</option>
+<option value="3">Mech</option>
+</select>
+
+<label for="address">Address:</label>
+<textarea name="address" id="address" rows="2" cols="20"></textarea>
+
+<div class="form-buttons">
+<input type="submit" value="Accept">
+<input type="reset" value="Ignore">
+</div>
+</form>
+</body>
+</html>

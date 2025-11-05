@@ -1,0 +1,33 @@
+import datetime
+
+def chatbot_response(user_input):
+    user_input = user_input.lower()
+    if "hello" in user_input or "hi" in user_input or "hey" in user_input:
+        return "Hello! How can I help you today?"
+    elif "help" in user_input:
+        return "Sure! I can assist you with greetings, time, date, or simple questions."
+    elif "your name" in user_input:
+        return "I'm your friendly chatbot."
+    elif "time" in user_input:
+        current_time = datetime.datetime.now().strftime("%H:%M:%S")
+        return f"The current time is {current_time}."
+    elif "date" in user_input:
+        current_date = datetime.datetime.now().strftime("%Y-%m-%d")
+        return f"Today's date is {current_date}."
+    elif "weather" in user_input:
+        return "I can't fetch live weather now, but you can check a weather website!"
+    elif "bye" in user_input or "exit" in user_input or "quit" in user_input:
+        return "Goodbye! Have a great day."
+    else:
+        return "I'm sorry, I didn't understand that. Can you please rephrase?"
+def run_chatbot():
+    print("Chatbot is running! Type 'bye' to exit.\n")
+    while True:
+        user_input = input("You: ")
+        response = chatbot_response(user_input)
+        print("Bot:", response)
+        if "bye" in user_input.lower() or "exit" in user_input.lower() or "quit" in user_input.lower():
+            break
+
+if __name__ == "__main__":
+    run_chatbot()

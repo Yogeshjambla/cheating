@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE books SYSTEM "books.dtd">
+<books>
+<book>
+<Ɵtle>EffecƟve Java</Ɵtle>
+<author>Joshua Bloch</author>
+<isbn>9780134685991</isbn>
+<publisher>Addison-Wesley</publisher>
+<ediƟon>3</ediƟon>
+<price>45.99</price>
+22 | P a g e
+</book>
+<book>
+<Ɵtle>Clean Code</Ɵtle>
+<author>Robert C. MarƟn</author>
+<isbn>9780132350884</isbn>
+<publisher>PrenƟce Hall</publisher>
+<ediƟon>1</ediƟon>
+<price>40.00</price>
+</book>
+</books>
